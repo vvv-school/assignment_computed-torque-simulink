@@ -1,0 +1,33 @@
+<application>
+    <name>Fixture for Assignment on Computed Torque</name>
+    <description>A fixture to prepare components required for the assignment</description>
+    <version>1.0</version>
+    <authors>
+        <author email="francesco.romano@iit.it">Francesco Romano</author>
+    </authors>
+    <!-- <module>
+        <name>gzserver</name>
+        <parameters>-slibgazebo_yarp_clock.so icub_simple_fixed_world/icub_simple_fixed.world</parameters>
+        <node>testnode</node>
+    </module> -->
+    <module>
+        <name>/Applications/MATLAB_R2016b.app/bin/matlab</name>
+        <parameters>-nodisplay -nodesktop -r test</parameters>
+        <workdir>/Users/makaveli/Projects/IIT/vvv17/dynamics_solution_computed-torque-simulink/smoke-test/..</workdir>
+        <environment></environment>
+        <dependencies>
+            <port timeout="10">/icubSim/right_leg/state:o</port>
+        </dependencies>
+        <node>testnode</node>
+    </module>
+    
+    <!-- <module>
+        <name>yarp wait /computed-torque/qDes:i</name>
+        <environment></environment>
+        <dependencies>
+            <port timeout="120">/computed-torque/qDes:i</port>
+        </dependencies>
+        <node>testnode</node>
+    </module> -->
+ </application>
+
