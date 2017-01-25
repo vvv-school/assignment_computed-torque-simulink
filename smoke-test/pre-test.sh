@@ -11,3 +11,4 @@
 #   darwin*)  alias matlab='/Applications/MATLAB_R2016b.app/bin/matlab' ;;
 # esac
 #
+export YARP_ROBOT_NAME=icubGazeboSim
