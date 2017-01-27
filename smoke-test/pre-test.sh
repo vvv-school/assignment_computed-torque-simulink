@@ -14,4 +14,4 @@
 export YARP_ROBOT_NAME=icubGazeboSim
 
 OLDMATLABPATH=${MATLABPATH}
-export MATLABPATH=${MATLABPATH}:`pwd`/..
+export MATLABPATH=${MATLABPATH}:`pwd`
