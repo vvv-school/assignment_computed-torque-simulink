@@ -2,9 +2,12 @@
 disp('Current working directory');
 pwd
 
+disp('Matlab path');
+path
 model = 'computed_torque';
 
 fprintf('Loading model %s\n', model);
+fprintf('In %s\n', which(model));
 
 open_system(model,'loadonly');
 
