@@ -14,7 +14,6 @@
         <name>matlab</name>
         <environment>YARP_ROBOT_NAME=icubGazeboSim</environment>
         <parameters>-nodisplay -nodesktop -r test</parameters>
-        <workdir>${CMAKE_CURRENT_SOURCE_DIR}/..</workdir>
         <environment></environment>
         <dependencies>
             <port timeout="10">/icubSim/right_leg/state:o</port>
