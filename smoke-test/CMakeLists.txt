@@ -16,8 +16,6 @@ find_package(YARP REQUIRED)
 find_package(yarpWholeBodyInterface REQUIRED)
 find_package(Eigen3 REQUIRED)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/fixtures/fixture.xml.in ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/fixture.xml)
-
 list(APPEND CMAKE_MODULE_PATH ${YARP_MODULE_PATH})
 
 # add include directories
