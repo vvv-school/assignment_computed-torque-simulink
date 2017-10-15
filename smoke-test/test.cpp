@@ -117,7 +117,7 @@ public:
         // as refernce sum 40 degs to the first joint of the torso
         references(0) += ((40.0 * M_PI) / 180.0);
 
-        RTF_ASSERT_FAIL_IF(Network::connect("/TestAssignmentComputedTorque/qDes:o", "/computed-torque/qDes:i"), "Failed to connect ports");
+        RTF_ASSERT_FAIL_IF_FALSE(Network::connect("/TestAssignmentComputedTorque/qDes:o", "/computed-torque/qDes:i"), "Failed to connect ports");
         return true;
     }
 
@@ -134,7 +134,7 @@ public:
     /******************************************************************/
     virtual void run()
     {
-        RTF_ASSERT_FAIL_IF(m_robot, "WBI object is null. Test internal failure");
+        RTF_ASSERT_FAIL_IF_FALSE(m_robot, "WBI object is null. Test internal failure");
         
         // sending references to the port
         Vector& outReference = portReference.prepare();
