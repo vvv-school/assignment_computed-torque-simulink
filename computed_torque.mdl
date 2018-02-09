@@ -1,12 +1,12 @@
 Model {
   Name			  "computed_torque"
-  Version		  8.8
-  SavedCharacterEncoding  "US-ASCII"
+  Version		  9.0
+  SavedCharacterEncoding  "UTF-8"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.16"
+    ComputedModelVersion    "1.21"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -15,12 +15,41 @@ Model {
     HasInitializeEvent	    0
     HasTerminateEvent	    0
     IsExportFunctionModel   0
+    NumParameterArguments   0
+    NumExternalFileReferences 4
+    ExternalFileReference {
+      Reference		      "WBToolboxLibrary/Utilities/Configuration"
+      Path		      "computed_torque/Configuration"
+      SID		      "36"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "WBToolboxLibrary/Utilities/Simulator Synchronizer"
+      Path		      "computed_torque/Simulator Synchronizer"
+      SID		      "22"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "WBToolboxLibrary/Utilities/Yarp Read"
+      Path		      "computed_torque/Subsystem/Yarp Read"
+      SID		      "26"
+      Type		      "LIBRARY_BLOCK"
+    }
+    ExternalFileReference {
+      Reference		      "WBToolboxLibrary/Utilities/holder\n"
+      Path		      "computed_torque/Subsystem/holder "
+      SID		      "6"
+      Type		      "LIBRARY_BLOCK"
+    }
+    OrderedModelArguments   1
   }
   LogicAnalyzerGraphicalSettings ""
   LogicAnalyzerPlugin	  "on"
   LogicAnalyzerSignalOrdering ""
   DiagnosticSuppressor	  "on"
-  SuppressorTable	  "22 serialization::archive 11 0 3 0 0 0 0 0"
+  SuppressorTable	  "22 serialization::archive 11 0 6 0 0 0 11 0"
+  CustomCodeFunctionData  ""
+  SLCCPlugin		  "on"
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
   DisableAllScopes	  off
@@ -30,9 +59,8 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "WBT_modelName = 'computed-torque';\nWBT_wbiList = 'ROBOT_TORQUE_CONTROL_JOINTS_WITHOUT_PRONOSUP';\n\nset"
-  "env('YARP_ROBOT_NAME','icubGazeboSim');\n\nDofs = 23;\n\n"
-  LastSavedArchitecture	  "maci64"
+  InitFcn		  "setenv('YARP_ROBOT_NAME','iCubGenovaV2_5');\n\nTs = 0.1;\nDofs = 23;\n\n"
+  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -42,7 +70,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [588.0, 150.0, 1287.0, 909.0]
+      Location		      [1092.0, 567.0, 1439.0, 1064.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -66,9 +94,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1253.0, 736.0]
-	ZoomFactor		[2.1134328358208956]
-	Offset			[155.82066560734467, 219.37570621468927]
+	Extents			[1401.0, 817.0]
+	ZoomFactor		[2.0076335877862594]
+	Offset			[93.061290892649936, 217.02661596958174]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -86,31 +114,32 @@ Model {
       }
       WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
-      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABvAP///wAAAAEAAAAAAAAAAPwCA"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAACNAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAKgD///8AAAUHAAADFwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAMwD///8AAAWfAAADfAAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
-      "////wEAAACE/////wAAAAAAAAAA/////wEAAAD2/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAF6/////wAAAAAAAAAA/"
-      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAOv/////wAAAAAAAAAA/"
-      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
+      "////wEAAACO/////wAAAAAAAAAA/////wEAAAD4/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAGG/////wAAAAAAAAAA/"
+      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAP3/////wAAAAAAAAAA/"
+      "////wEAAAQx/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
     }
   }
+  HideAutomaticNames	  off
   Created		  "Wed Jan 18 15:15:16 2017"
   Creator		  "makaveli"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "makaveli"
+  LastModifiedBy	  "dferigo"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 19 12:06:43 2017"
-  RTWModifiedTimeStamp	  406728398
-  ModelVersionFormat	  "1.%<AutoIncrement:16>"
-  ConfigurationManager	  "none"
+  LastModifiedDate	  "Fri Feb 09 15:25:05 2018"
+  RTWModifiedTimeStamp	  439813210
+  ModelVersionFormat	  "1.%<AutoIncrement:21>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
+  PortDataTypeDisplayFormat "AliasTypeOnly"
   ShowEditTimeErrors	  on
   ShowEditTimeWarnings	  on
   ShowEditTimeAdvisorChecks off
@@ -131,12 +160,14 @@ Model {
   BlockNameDataTip	  off
   BlockParametersDataTip  off
   BlockDescriptionStringDataTip	off
+  BlockVariantConditionDataTip off
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
   FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
+  VisualizeLoggedSignalsWhenLoggingToFile off
   PauseTimes		  "5"
   NumberOfSteps		  1
   SnapshotBufferSize	  10
@@ -191,12 +222,13 @@ Model {
   ExtModeAutoUpdateStatusClock on
   ShowModelReferenceBlockVersion off
   ShowModelReferenceBlockIO off
+  OrderedModelArguments	  on
   Array {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      8
-      Version		      "1.16.5"
+      Version		      "1.17.1"
       DisabledProps	      []
       Description	      ""
       Array {
@@ -204,15 +236,14 @@ Model {
 	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  9
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
 	  StopTime		  "inf"
 	  AbsTol		  "auto"
-	  FixedStep		  "0.01"
+	  FixedStep		  "Ts"
 	  InitialStep		  "auto"
-	  MaxNumMinSteps	  "-1"
 	  MaxOrder		  5
 	  ZcThreshold		  "auto"
 	  ConsecutiveZCsStepRelTol "10*128*eps"
@@ -224,7 +255,6 @@ Model {
 	  MaxConsecutiveMinStep	  "1"
 	  RelTol		  "1e-3"
 	  EnableMultiTasking	  off
-	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
 	  Solver		  "FixedStepDiscrete"
 	  SolverName		  "FixedStepDiscrete"
@@ -241,10 +271,11 @@ Model {
 	  SampleTimeConstraint	  "Unconstrained"
 	  InsertRTBMode		  "Whenever possible"
 	  SampleTimeProperty	  []
+	  DecoupledContinuousIntegration off
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  10
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  Decimation		  "1"
@@ -279,12 +310,13 @@ Model {
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
 	  LoggingToFile		  off
+	  DatasetSignalFormat	  "timeseries"
 	  LoggingFileName	  "out.mat"
 	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  11
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -339,10 +371,14 @@ Model {
 	  BufferReusableBoundary  on
 	  SimCompilerOptimization "off"
 	  AccelVerboseBuild	  off
+	  OptimizeBlockOrder	  "off"
+	  OptimizeDataStoreBuffers on
+	  BusAssignmentInplaceUpdate on
+	  DifferentSizesBufferReuse off
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  12
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    1
@@ -381,6 +417,7 @@ Model {
 	  MultiTaskRateTransMsg	  "error"
 	  SingleTaskRateTransMsg  "none"
 	  TasksWithSamePriorityMsg "warning"
+	  ExportedTasksRateTransMsg "none"
 	  SigSpecEnsureSampleTimeMsg "warning"
 	  CheckMatrixSingularityMsg "none"
 	  IntegerOverflowMsg	  "warning"
@@ -422,6 +459,7 @@ Model {
 	  StateNameClashWarn	  "none"
 	  SimStateInterfaceChecksumMismatchMsg "warning"
 	  SimStateOlderReleaseMsg "error"
+	  ChecksumConsistencyForSSReuse	"none"
 	  InitInArrayFormatMsg	  "warning"
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
@@ -429,6 +467,7 @@ Model {
 	  SymbolicDimMinMaxWarning "warning"
 	  LossOfSymbolicDimsSimulationWarning "warning"
 	  LossOfSymbolicDimsCodeGenerationWarning "error"
+	  SymbolicDimsDataTypeCodeGenerationDiagnostic "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "error"
@@ -447,10 +486,14 @@ Model {
 	  AllowedUnitSystems	  "all"
 	  UnitsInconsistencyMsg	  "warning"
 	  AllowAutomaticUnitConversions	on
+	  RCSCRenamedMsg	  "warning"
+	  RCSCObservableMsg	  "warning"
+	  ForceCombineOutputUpdateInSim	off
+	  UnitDatabase		  ""
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  13
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  ProdBitPerChar	  8
@@ -498,7 +541,7 @@ Model {
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  14
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
@@ -517,7 +560,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  15
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  SimCustomSourceCode	  ""
@@ -541,11 +584,13 @@ Model {
 	  ModelFunctionsGlobalVisibility "on"
 	  CompileTimeRecursionLimit 50
 	  EnableRuntimeRecursion  on
+	  MATLABDynamicMemAlloc	  on
+	  MATLABDynamicMemAllocThreshold 65536
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  16
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    13
@@ -593,6 +638,7 @@ Model {
 	  CustomLibrary		  ""
 	  CustomDefine		  ""
 	  CustomLAPACKCallback	  ""
+	  CustomFFTCallback	  ""
 	  CustomInitializer	  ""
 	  CustomTerminator	  ""
 	  Toolchain		  "Automatically locate an installed toolchain"
@@ -628,10 +674,10 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      17
-	      Version		      "1.16.5"
+	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
-		Dimension		25
+		Dimension		27
 		Cell			"IgnoreCustomStorageClasses"
 		Cell			"IgnoreTestpoints"
 		Cell			"InsertBlockDesc"
@@ -657,6 +703,8 @@ Model {
 		Cell			"CustomSymbolStrUtil"
 		Cell			"CustomUserTokenString"
 		Cell			"ReqsInCode"
+		Cell			"CustomSymbolStrEmxType"
+		Cell			"CustomSymbolStrEmxFcn"
 		PropName		"DisabledProps"
 	      }
 	      Description	      ""
@@ -666,18 +714,16 @@ Model {
 	      CommentStyle	      "Auto"
 	      IgnoreCustomStorageClasses on
 	      IgnoreTestpoints	      off
-	      IncHierarchyInIds	      off
 	      MaxIdLength	      31
 	      PreserveName	      off
 	      PreserveNameWithParent  off
 	      ShowEliminatedStatement off
 	      OperatorAnnotations     off
-	      IncAutoGenComments      off
 	      SimulinkDataObjDesc     off
 	      SFDataObjDesc	      off
 	      MATLABFcnDesc	      off
-	      IncDataTypeInIds	      off
 	      MangleLength	      1
+	      SharedChecksumLength    8
 	      CustomSymbolStrGlobalVar "$R$N$M"
 	      CustomSymbolStrType     "$N$R$M_T"
 	      CustomSymbolStrField    "$N$M"
@@ -688,6 +734,8 @@ Model {
 	      CustomSymbolStrTmpVar   "$N$M"
 	      CustomSymbolStrMacro    "$R$N$M"
 	      CustomSymbolStrUtil     "$N$C"
+	      CustomSymbolStrEmxType  "emxArray_$M$N"
+	      CustomSymbolStrEmxFcn   "emx$M$N"
 	      CustomUserTokenString   ""
 	      CustomCommentsFcn	      ""
 	      DefineNamingRule	      "None"
@@ -699,6 +747,7 @@ Model {
 	      InsertBlockDesc	      off
 	      InsertPolySpaceComments off
 	      SimulinkBlockComments   on
+	      StateflowObjectComments on
 	      MATLABSourceComments    off
 	      EnableCustomComments    off
 	      InternalIdentifierFile  ""
@@ -711,7 +760,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      18
-	      Version		      "1.16.5"
+	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
 		Dimension		15
@@ -740,8 +789,7 @@ Model {
 	      TargetLangStandard      "C99 (ISO)"
 	      CodeReplacementLibrary  "None"
 	      UtilityFuncGeneration   "Auto"
-	      ERTMultiwordTypeDef     "System defined"
-	      ERTMultiwordLength      256
+	      MultiwordTypeDef	      "System defined"
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
 	      InferredTypesCompatibility off
@@ -757,7 +805,6 @@ Model {
 	      CombineOutputUpdateFcns on
 	      CombineSignalStateStructs	off
 	      SuppressErrorStatus     off
-	      ERTFirstTimeCompliant   off
 	      IncludeFileDelimiter    "Auto"
 	      ERTCustomFileBanners    off
 	      SupportAbsoluteTime     on
@@ -785,6 +832,11 @@ Model {
 	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      CoderGroups	      []
+	      AccessMethods	      []
+	      LookupTableObjectStructAxisOrder "1,2,3,4,..."
+	      LUTObjectStructOrderExplicitValues "Size,Breakpoints,Table"
+	      LUTObjectStructOrderEvenSpacing "Size,Breakpoints,Table"
+	      ArrayLayout	      "Column-major"
 	      UseMalloc		      off
 	      ExtMode		      off
 	      ExtModeStaticAlloc      off
@@ -806,7 +858,7 @@ Model {
 	}
 	SlCovCC.ConfigComp {
 	  $ObjectID		  19
-	  Version		  "1.16.5"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  "Simulink Coverage Configuration Component"
 	  Name			  "Simulink Coverage"
@@ -842,13 +894,14 @@ Model {
 	  CovUseTimeInterval	  off
 	  CovStartTime		  0
 	  CovStopTime		  0
+	  CovMcdcMode		  "Masking"
 	}
 	PropName		"Components"
       }
       Name		      "Configuration"
       ExtraOptions	      ""
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 195, 142, 1085, 882 ] 
+      ConfigPrmDlgPosition    [ 195, 142, 1085, 882 ]
     }
     PropName		    "ConfigurationSets"
   }
@@ -877,6 +930,7 @@ Model {
     FontWeight		    "normal"
     FontAngle		    "normal"
     ShowName		    on
+    HideAutomaticName	    on
     BlockRotation	    0
     BlockMirror		    off
   }
@@ -890,7 +944,12 @@ Model {
     FontSize		    10
     FontWeight		    "normal"
     FontAngle		    "normal"
+    MarkupType		    "model"
     UseDisplayTextAsClickCallback off
+    AnnotationType	    "note_annotation"
+    FixedHeight		    off
+    FixedWidth		    off
+    Interpreter		    "off"
   }
   LineDefaults {
     FontName		    "Helvetica"
@@ -902,7 +961,7 @@ Model {
     SelfModifiable	    "off"
     IconFrame		    "on"
     IconOpaque		    "opaque"
-    RunInitForIconRedraw    "off"
+    RunInitForIconRedraw    "analyze"
     IconRotate		    "none"
     PortRotate		    "default"
     IconUnits		    "autoscale"
@@ -955,6 +1014,10 @@ Model {
       SourceOfInitialOutputValue "Dialog"
       OutputWhenDisabled      "held"
       InitialOutput	      "[]"
+      MustResolveToSignalObject	off
+      OutputWhenUnConnected   off
+      OutputWhenUnconnectedValue "0"
+      VectorParamsAs1DForOutWhenUnconnected off
     }
     Block {
       BlockType		      SubSystem
@@ -983,10 +1046,12 @@ Model {
       MaskHideContents	      off
       SFBlockType	      "NONE"
       GeneratePreprocessorConditionals off
+      AllowZeroVariantControls off
       PropagateVariantConditions off
       TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
       IsWebBlock	      off
+      IsObserver	      off
     }
     Block {
       BlockType		      Switch
@@ -1006,8 +1071,9 @@ Model {
   }
   System {
     Name		    "computed_torque"
-    Location		    [588, 150, 1875, 1059]
+    Location		    [1092, 567, 2531, 1631]
     Open		    on
+    PortBlocksUseCompactNotation off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1018,22 +1084,47 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "211"
+    ZoomFactor		    "201"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "34"
+    SIDHighWatermark	    "36"
+    Block {
+      BlockType		      Reference
+      Name		      "Configuration"
+      SID		      "36"
+      Ports		      []
+      Position		      [400, 570, 475, 600]
+      ZOrder		      224
+      LibraryVersion	      "1.480"
+      SourceBlock	      "WBToolboxLibrary/Utilities/Configuration"
+      SourceType	      ""
+      SourceProductName	      "Whole Body Toolbox"
+      ContentPreviewEnabled   off
+      ConfigSource	      "Mask"
+      ConfigObject	      "'WBTConfigRobot'"
+      RobotName		      "'icubSim'"
+      UrdfFile		      "'model.urdf'"
+      ControlledJoints	      "{'torso_pitch','torso_roll','torso_yaw','l_shoulder_pitch','l_shoulder_roll','l_shoulder"
+      "_yaw','l_elbow','r_shoulder_pitch','r_shoulder_roll','r_shoulder_yaw','r_elbow','l_hip_pitch','l_hip_roll','l_hi"
+      "p_yaw','l_knee','l_ankle_pitch','l_ankle_roll','r_hip_pitch','r_hip_roll','r_hip_yaw','r_knee','r_ankle_pitch','"
+      "r_ankle_roll'};"
+      ControlBoardsNames      "{'torso','left_arm','right_arm','left_leg','right_leg'}"
+      LocalName		      "'WBT'"
+      GravityVector	      "[0,0,-9.81]"
+    }
     Block {
       BlockType		      Reference
       Name		      "Simulator Synchronizer"
       SID		      "22"
       Ports		      []
-      Position		      [375, 524, 505, 561]
+      Position		      [375, 499, 505, 536]
       ZOrder		      92
       ForegroundColor	      "[0.490196, 0.000000, 0.000000]"
       ShowName		      off
-      LibraryVersion	      "1.381"
+      LibraryVersion	      "1.480"
       SourceBlock	      "WBToolboxLibrary/Utilities/Simulator Synchronizer"
       SourceType	      "Simulator Synchronizer"
-      period		      "0.01"
+      SourceProductName	      "Whole Body Toolbox"
+      period		      "Ts"
       serverPortName	      "'/clock/rpc'"
       clientPortName	      "'/WBT_synchronizer/rpc:o'"
     }
@@ -1042,15 +1133,16 @@ Model {
       Name		      "Subsystem"
       SID		      "31"
       Ports		      [1, 1]
-      Position		      [360, 272, 520, 308]
+      Position		      [345, 277, 540, 313]
       ZOrder		      -24
       ShowName		      off
       RequestExecContextInheritance off
       Variant		      off
       System {
 	Name			"Subsystem"
-	Location		[588, 150, 1875, 1059]
+	Location		[1092, 567, 2531, 1631]
 	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1061,21 +1153,20 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"92"
+	ZoomFactor		"310"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Joint configuration"
-	  SID			  "32"
-	  Position		  [-60, 156, -30, 171]
-	  ZOrder		  98
-	  BlockRotation		  270
+	  SID			  "35"
+	  Position		  [0, 153, 30, 167]
+	  ZOrder		  100
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Switch
 	  Name			  "Switch"
 	  SID			  "27"
-	  Position		  [220, 125, 270, 165]
+	  Position		  [230, 125, 280, 165]
 	  ZOrder		  97
 	  Criteria		  "u2 > Threshold"
 	  InputSameDT		  off
@@ -1083,8 +1174,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "reference"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -1092,12 +1181,13 @@ Model {
 	  Name			  "Yarp Read"
 	  SID			  "26"
 	  Ports			  [0, 2]
-	  Position		  [100, 19, 160, 66]
+	  Position		  [80, 44, 140, 91]
 	  ZOrder		  96
 	  ForegroundColor	  "[0.490196, 0.000000, 0.000000]"
-	  LibraryVersion	  "1.381"
+	  LibraryVersion	  "1.480"
 	  SourceBlock		  "WBToolboxLibrary/Utilities/Yarp Read"
 	  SourceType		  "YARP Read"
+	  SourceProductName	  "Whole Body Toolbox"
 	  portName		  "'/computed-torque/qDes:i'"
 	  signalSize		  "Dofs"
 	  blocking		  off
@@ -1110,29 +1200,29 @@ Model {
 	  Name			  "holder\n"
 	  SID			  "6"
 	  Ports			  [1, 1]
-	  Position		  [85, 122, 145, 168]
+	  Position		  [80, 137, 140, 183]
 	  ZOrder		  76
 	  BackgroundColor	  "[0.537255, 0.721569, 1.000000]"
-	  LibraryVersion	  "1.381"
+	  LibraryVersion	  "1.480"
 	  SourceBlock		  "WBToolboxLibrary/Utilities/holder\n"
 	  SourceType		  "Holder"
+	  SourceProductName	  "Whole Body Toolbox"
 	  ContentPreviewEnabled	  off
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "Joint Reference"
 	  SID			  "33"
-	  Position		  [350, 183, 380, 197]
+	  Position		  [365, 138, 395, 152]
 	  ZOrder		  99
 	  IconDisplay		  "Port number"
 	}
 	Line {
 	  Name			  "reference"
 	  ZOrder		  99
-	  Labels		  [2, 1]
+	  Labels		  [1, 0]
 	  SrcBlock		  "Switch"
 	  SrcPort		  1
-	  Points		  [28, 0; 0, 45]
 	  DstBlock		  "Joint Reference"
 	  DstPort		  1
 	}
@@ -1140,7 +1230,6 @@ Model {
 	  ZOrder		  95
 	  SrcBlock		  "holder\n"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, 15]
 	  DstBlock		  "Switch"
 	  DstPort		  3
 	}
@@ -1148,7 +1237,7 @@ Model {
 	  ZOrder		  96
 	  SrcBlock		  "Yarp Read"
 	  SrcPort		  2
-	  Points		  [37, 0; 0, 90]
+	  Points		  [43, 0; 0, 65]
 	  DstBlock		  "Switch"
 	  DstPort		  2
 	}
@@ -1156,15 +1245,14 @@ Model {
 	  ZOrder		  97
 	  SrcBlock		  "Yarp Read"
 	  SrcPort		  1
-	  Points		  [28, 0; 0, 100]
+	  Points		  [66, 0; 0, 75]
 	  DstBlock		  "Switch"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  98
+	  ZOrder		  104
 	  SrcBlock		  "Joint configuration"
 	  SrcPort		  1
-	  Points		  [0, -6]
 	  DstBlock		  "holder\n"
 	  DstPort		  1
 	}
@@ -1172,20 +1260,19 @@ Model {
     }
     Annotation {
       SID		      "34"
-      Name		      "Joint configuration is needed as input as\nif no references are provided to the controller\nthe ini"
-      "tial configuration is mantained"
-      Position		      [352, 226, 552, 258]
+      Name		      "Joint configuration is needed as input. This subsystem\nsends to the controller the initial joints "
+      "configuration\nif the references are not provided through yarp port."
+      Position		      [322, 222, 563, 263]
       InternalMargins	      [0, 0, 0, 0]
-      FixedHeight	      off
-      FixedWidth	      off
       HorizontalAlignment     "left"
       VerticalAlignment	      "top"
+      ZOrder		      -1
     }
   }
 }
 #Finite State Machines
 #
-#   Stateflow 80000010
+#   Stateflow 80000012
 #
 #
 Stateflow {
@@ -1194,7 +1281,7 @@ Stateflow {
     name		    "computed_torque"
     created		    "18-Jan-2017 15:16:33"
     isLibrary		    0
-    sfVersion		    80000010
+    sfVersion		    80000012
     firstTarget		    2
   }
   target {
