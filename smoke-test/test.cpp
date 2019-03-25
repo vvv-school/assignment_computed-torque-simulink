@@ -8,9 +8,9 @@
 #include <sstream>
 #include <vector>
 
-#include <yarp/rtf/TestCase.h>
-#include <rtf/dll/Plugin.h>
-#include <rtf/TestAssert.h>
+#include <yarp/robottestingframework/TestCase.h>
+#include <robottestingframework/dll/Plugin.h>
+#include <robottestingframework/TestAssert.h>
 
 
 #include <yarp/os/all.h>
@@ -18,7 +18,7 @@
 
 #include <yarpWholeBodyInterface/yarpWholeBodyInterface.h>
 
-using namespace RTF;
+using namespace robottestingframework;
 using namespace yarp::os;
 using namespace yarp::sig;
 
@@ -30,7 +30,7 @@ struct JointError{
 };
 
 /**********************************************************************/
-class TestAssignmentComputedTorque : public yarp::rtf::TestCase
+class TestAssignmentComputedTorque : public yarp::robottestingframework::TestCase
 {
     BufferedPort<Vector> portReference;
     Vector references;
@@ -40,7 +40,7 @@ class TestAssignmentComputedTorque : public yarp::rtf::TestCase
 public:
     /******************************************************************/
     TestAssignmentComputedTorque() :
-        yarp::rtf::TestCase("TestAssignmentComputedTorque"), m_robot(0)
+        yarp::robottestingframework::TestCase("TestAssignmentComputedTorque"), m_robot(0)
     {
     }
 
@@ -56,19 +56,19 @@ public:
         double maxTimeout = 60; //seconds
         while (true) {
             if (NetworkBase::exists("/computed-torque/qDes:i")) {
-                RTF_TEST_REPORT("Controller found. Starting test");
+                ROBOTTESTINGFRAMEWORK_TEST_REPORT("Controller found. Starting test");
                 break;
             }
             if ((Time::now() - firstTime) > maxTimeout) {
-                RTF_ASSERT_FAIL("Could not find controller.");
+                ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Could not find controller.");
             }
             Time::delay(1);
             
         }
         
-        // RTF_TEST_REPORT("Waiting for matlab");
+        // ROBOTTESTINGFRAMEWORK_TEST_REPORT("Waiting for matlab");
         // Time::delay(15.0);
-        // RTF_TEST_REPORT("Finished waiting");
+        // ROBOTTESTINGFRAMEWORK_TEST_REPORT("Finished waiting");
         
         ResourceFinder rf = ResourceFinder::getResourceFinderSingleton();
 
@@ -76,7 +76,7 @@ public:
         std::string wbiConfFile = property.check("wbi_config_file", Value("yarpWholeBodyInterface.ini"), "Checking wbi configuration file").asString();
 
         if (!wbiProperties.fromConfigFile(rf.findFile(wbiConfFile))) {
-            RTF_ASSERT_FAIL("Not possible to load WBI properties from file.");
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Not possible to load WBI properties from file.");
             return false;
         }
         wbiProperties.fromString(property.toString(), false);
@@ -86,28 +86,28 @@ public:
 
         wbi::IDList iCubMainJoints;
         if (!yarpWbi::loadIdListFromConfig(wbiList, wbiProperties, iCubMainJoints)) {
-            RTF_ASSERT_FAIL("Cannot find joint list");
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Cannot find joint list");
             return false;
         }
 
         unsigned actuatedDOFs = iCubMainJoints.size();
-        RTF_TEST_REPORT(Asserter::format("DOFS: %d", actuatedDOFs));
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("DOFS: %d", actuatedDOFs));
 
         //create an instance of wbi
         m_robot = new yarpWbi::yarpWholeBodyInterface("TestAssignmentComputedTorque", wbiProperties);
         if (!m_robot) {
-            RTF_ASSERT_FAIL("Could not create wbi object.");
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Could not create wbi object.");
             return false;
         }
 
         m_robot->addJoints(iCubMainJoints);
         if (!m_robot->init()) {
-            RTF_ASSERT_FAIL("Could not initialize wbi object.");
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Could not initialize wbi object.");
             return false;
         }
         
         if (!portReference.open("/TestAssignmentComputedTorque/qDes:o")) {
-            RTF_ASSERT_FAIL("Could not open reference port.");
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Could not open reference port.");
             return false;
         }
         
@@ -117,14 +117,14 @@ public:
         // as refernce sum 40 degs to the first joint of the torso
         references(0) += ((40.0 * M_PI) / 180.0);
 
-        RTF_ASSERT_FAIL_IF_FALSE(Network::connect("/TestAssignmentComputedTorque/qDes:o", "/computed-torque/qDes:i"), "Failed to connect ports");
+        ROBOTTESTINGFRAMEWORK_ASSERT_FAIL_IF_FALSE(Network::connect("/TestAssignmentComputedTorque/qDes:o", "/computed-torque/qDes:i"), "Failed to connect ports");
         return true;
     }
 
     /******************************************************************/
     virtual void tearDown()
     {
-        RTF_TEST_REPORT("Closing Ports");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Closing Ports");
         portReference.close();
         m_robot->close();
     }
@@ -134,19 +134,19 @@ public:
     /******************************************************************/
     virtual void run()
     {
-        RTF_ASSERT_FAIL_IF_FALSE(m_robot, "WBI object is null. Test internal failure");
+        ROBOTTESTINGFRAMEWORK_ASSERT_FAIL_IF_FALSE(m_robot, "WBI object is null. Test internal failure");
         
         // sending references to the port
         Vector& outReference = portReference.prepare();
         outReference = references;
         portReference.write();
 
-        RTF_TEST_REPORT("Waiting the controller to adapt to the new reference");        
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Waiting the controller to adapt to the new reference");        
         Time::delay(10.0);
 
         Vector currentConfigurationVector(references.size(), 0.0);
      
-        RTF_ASSERT_ERROR_IF_FALSE(m_robot->getEstimates(wbi::ESTIMATE_JOINT_POS, currentConfigurationVector.data()), "Failed to retrieve robot configuration");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(m_robot->getEstimates(wbi::ESTIMATE_JOINT_POS, currentConfigurationVector.data()), "Failed to retrieve robot configuration");
         
         double maxJointError = 5.0 * M_PI / 180.0;
         
@@ -171,13 +171,13 @@ public:
 
         for (std::vector<JointError>::const_iterator it = errors.begin();
             it != errors.end(); ++it) {
-                RTF_TEST_REPORT(Asserter::format("Joint[%d]. Expected %lf - Actual %lf [rad]",
+                ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("Joint[%d]. Expected %lf - Actual %lf [rad]",
                                                  it->index, it->expected, it->value));
             }
 
-        RTF_ASSERT_ERROR_IF_FALSE(errors.empty(), "Error in tracking reference");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(errors.empty(), "Error in tracking reference");
 
     }
 };
 
-PREPARE_PLUGIN(TestAssignmentComputedTorque)
+ROBOTTESTINGFRAMEWORK_PREPARE_PLUGIN(TestAssignmentComputedTorque)
